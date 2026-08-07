@@ -17,3 +17,15 @@ The player data lives in data.js. The QR code does not need to change if you kee
 
 NOTE
 Roster information is reproduced from the school-supplied files. Marion County's source roster did not include player positions, so those cells display a dash.
+
+UPDATE V3
+- Chattanooga State remains the presenting sponsor in the top header.
+- Bottom sponsor section has been replaced with the supplied 309 Media + Marketing artwork.
+
+TO UPDATE THE LIVE GITHUB SITE
+Upload/replace these four files in the repository root:
+1. index.html
+2. styles.css
+3. sw.js
+4. 309-media-marketing.png
+Commit the changes. The existing website URL and QR code remain unchanged.

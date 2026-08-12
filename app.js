@@ -57,4 +57,4 @@ $("#closeDialog").onclick=()=>$("#rosterDialog").close();
 $("#rosterDialog").addEventListener("click",e=>{if(e.target===$("#rosterDialog"))$("#rosterDialog").close();});
 renderSchedule();renderTeams();
 
-if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{});}
+

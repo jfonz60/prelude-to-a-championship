@@ -3,58 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#071b2f">
+<meta name="theme-color" content="#06182b">
 <title>Prelude to a Championship</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="hero">
-  <div class="sponsor-card">
-    <span>Presented by</span>
-    <img src="chattanooga-state.png" alt="Chattanooga State Community College">
+<header class="topbar">
+  <div class="presenting-card">
+    <img src="chattanooga-state.jpg" alt="Chattanooga State Community College">
+    <div><span>Presenting Sponsor</span><strong>Chattanooga State</strong></div>
   </div>
-  <div class="eyebrow">High School Football Jamboree</div>
-  <h1>Prelude to a Championship</h1>
-  <p class="date">August 13–15, 2026 · All Times Eastern</p>
-  <a class="venue" target="_blank" rel="noopener"
-     href="https://www.google.com/maps/search/?api=1&query=Finley+Stadium+1826+Reggie+White+Blvd+Chattanooga+TN+37402">
-     Finley Stadium · Chattanooga, Tennessee
-  </a>
 </header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">2026 Football Jamboree</div>
+    <h1>Prelude to a Championship</h1>
+    <p class="hero-date">August 13–15, 2026 · All Times Eastern</p>
+    <p class="hero-venue">Finley Stadium · Chattanooga, Tennessee</p>
+    <div class="hero-actions">
+      <button data-go="schedule">View Schedule</button>
+      <button class="secondary" data-go="teams">View Rosters</button>
+    </div>
+  </div>
+</section>
 
 <main>
   <section class="quick-grid">
-    <button data-go="schedule">📅<strong>Schedule</strong></button>
-    <button data-go="teams">🏈<strong>Rosters</strong></button>
-    <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Finley+Stadium+1826+Reggie+White+Blvd+Chattanooga+TN+37402">📍<strong>Directions</strong></a>
-    <button data-go="sponsor">📣<strong>Sponsor</strong></button>
+    <button data-go="teams"><span>🏈</span><strong>Team Rosters</strong><small>12 participating schools</small></button>
+    <button data-go="schedule"><span>📅</span><strong>Schedule</strong><small>Game times and matchups</small></button>
+    <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Finley+Stadium+1826+Reggie+White+Blvd+Chattanooga+TN+37402"><span>📍</span><strong>Event Info</strong><small>Directions to Finley Stadium</small></a>
+    <button data-go="sponsors"><span>⭐</span><strong>Sponsors</strong><small>Event partners</small></button>
   </section>
 
   <section class="section" id="schedule">
-    <div class="heading"><div><span class="kicker">Game day</span><h2>Schedule</h2></div></div>
+    <div class="section-head"><div><span class="kicker">Game Day</span><h2>Schedule</h2></div><span class="pill">All times ET</span></div>
     <div id="scheduleList"></div>
   </section>
 
   <section class="section" id="teams">
-    <div class="heading">
-      <div><span class="kicker">12 participating schools</span><h2>Team Rosters</h2></div>
+    <div class="section-head">
+      <div><span class="kicker">Participating Schools</span><h2>Team Rosters</h2></div>
       <input id="teamSearch" type="search" placeholder="Find a team">
     </div>
     <div class="team-grid" id="teamGrid"></div>
   </section>
 
-  <section class="section" id="sponsor">
-    <div class="heading"><div><span class="kicker">Event partner</span><h2>309 Media + Marketing</h2></div></div>
-    <div class="sponsor-panel sponsor-309">
-      <img src="309-media-marketing.png" alt="309 Media + Marketing">
+  <section class="section" id="sponsors">
+    <div class="section-head centered"><div><span class="kicker">Event Sponsors</span><h2>Partners</h2></div></div>
+    <div class="sponsor-grid">
+      <article class="sponsor-card sponsor-presenting">
+        <div class="sponsor-label">Presenting Sponsor</div>
+        <img src="chattanooga-state.jpg" alt="Chattanooga State Community College">
+      </article>
+      <article class="sponsor-card sponsor-event">
+        <div class="sponsor-label">Event Sponsor</div>
+        <img src="309-media-marketing.png" alt="309 Media + Marketing">
+      </article>
     </div>
   </section>
 
   <section class="section">
-    <div class="heading"><div><span class="kicker">Venue</span><h2>Finley Stadium</h2></div></div>
+    <div class="section-head"><div><span class="kicker">Venue</span><h2>Finley Stadium</h2></div></div>
     <div class="venue-card">
-      <strong>1826 Reggie White Blvd<br>Chattanooga, TN 37402</strong>
+      <div><strong>1826 Reggie White Blvd</strong><span>Chattanooga, TN 37402</span></div>
       <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Finley+Stadium+1826+Reggie+White+Blvd+Chattanooga+TN+37402">Open in Maps</a>
     </div>
   </section>
@@ -62,16 +75,13 @@
 
 <dialog id="rosterDialog">
   <div class="dialog-head">
-    <div><span class="kicker">Official 2026 roster</span><h2 id="teamName"></h2><p id="matchup"></p></div>
+    <div><span class="kicker">Official 2026 Roster</span><h2 id="teamName"></h2><p id="matchup"></p></div>
     <button id="closeDialog" aria-label="Close">✕</button>
   </div>
   <div class="search-row"><input id="playerSearch" type="search" placeholder="Search player, #, position"></div>
   <div id="rosterCount" class="count"></div>
   <div class="table-wrap">
-    <table>
-      <thead><tr><th>#</th><th>Player</th><th>Pos.</th><th>Grade</th></tr></thead>
-      <tbody id="rosterBody"></tbody>
-    </table>
+    <table><thead><tr><th>#</th><th>Player</th><th>Pos.</th><th>Grade</th></tr></thead><tbody id="rosterBody"></tbody></table>
   </div>
 </dialog>
 
